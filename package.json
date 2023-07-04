@@ -2,16 +2,21 @@
   "name": "time_stone_front",
   "version": "0.1.0",
   "private": true,
+  "description": "一个专注于利用碎片时间提升个人能力的网站/前端部分",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "npx prettier --write \"app/**/*.tsx\"",
+    "format": "npx prettier --write \"app/**/*.tsx\" \"app/**/*.ts\" \"@core/**/*.tsx\" \"@core/**/*.ts\"",
     "lint": "next lint",
     "preinstall": "npx only-allow pnpm",
     "postinstall": "npx patch-package -y & node study/index"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.7",
+    "@mui/utils": "^5.13.7",
     "@types/node": "20.3.3",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",

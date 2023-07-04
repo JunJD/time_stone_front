@@ -19,6 +19,7 @@
     "prettier/prettier": "error",
     "no-var": "error",
     "no-console": "off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": ["error", { "vars": "all", "args": "none" }],
+    "linebreak-style": ["error", "windows"]
   }
 }
