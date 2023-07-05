@@ -6,14 +6,8 @@ const bundleAnalyzer = withBundleAnalyzer({
 });
 
 const nextConfig = withPlugins([[bundleAnalyzer]], {
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/zh',
-        permanent: true,
-      },
-    ];
+  experimental: {
+    appDir: true,
   },
   // 其他的Next.js配置项
 });

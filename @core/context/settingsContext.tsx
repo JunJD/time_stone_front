@@ -14,6 +14,7 @@ import { ThemeColor } from '@/@core/layouts.types';
 export type Settings = {
   mode: PaletteMode;
   themeColor: ThemeColor;
+  navVisible: boolean;
 };
 
 export type SettingsContextValue = {
@@ -24,6 +25,7 @@ export type SettingsContextValue = {
 const initialSettings: Settings = {
   themeColor: 'primary',
   mode: themeConfig.mode,
+  navVisible: false,
 };
 
 // ** 创建 settingContext
