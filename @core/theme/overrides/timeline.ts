@@ -1,10 +1,9 @@
-// ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 
 // ** Util Import
 import { hexToRGBA } from '@/@core/utils/hex-to-rgba';
 
-const Timeline = (theme: Theme) => {
+const Timeline = (theme: customTheme) => {
   return {
     MuiTimelineItem: {
       styleOverrides: {

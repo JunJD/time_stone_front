@@ -1,10 +1,9 @@
-// ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 
 // ** Util Import
 import { hexToRGBA } from '@/@core/utils/hex-to-rgba';
 
-const Tooltip = (theme: Theme) => {
+const Tooltip = (theme: customTheme) => {
   return {
     MuiTooltip: {
       styleOverrides: {

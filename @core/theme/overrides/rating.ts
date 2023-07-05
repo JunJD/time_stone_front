@@ -1,7 +1,6 @@
-// ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 
-const Rating = (theme: Theme) => {
+const Rating = (theme: customTheme) => {
   return {
     MuiRating: {
       styleOverrides: {

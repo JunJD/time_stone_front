@@ -15,8 +15,10 @@ const themeOptions = (settings: Settings): ThemeOptions => {
   // ** Vars
   const { mode, themeColor } = settings;
 
+  const customPalette = palette(mode, themeColor);
+
   const themeConfig = {
-    palette: palette(mode, themeColor),
+    palette: customPalette,
     typography: {
       fontFamily: [
         'Inter',

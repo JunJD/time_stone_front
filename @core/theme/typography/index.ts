@@ -1,7 +1,6 @@
-// ** Theme Type Import
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 
-const Typography = (theme: Theme) => {
+const Typography = (theme: customTheme) => {
   return {
     h1: {
       fontWeight: 500,

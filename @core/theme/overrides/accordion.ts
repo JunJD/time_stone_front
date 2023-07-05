@@ -1,15 +1,13 @@
 // ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 
-const Accordion = (theme: Theme) => {
+const Accordion = (theme: customTheme) => {
   return {
     MuiAccordion: {
       styleOverrides: {
         root: {
           '&.Mui-disabled': {
-            backgroundColor: `rgba(${
-              (theme.palette as any).customColors.main
-            }, 0.12)`,
+            backgroundColor: `rgba(${theme.palette.customColors.main}, 0.12)`,
           },
           '&.Mui-expanded': {
             boxShadow: theme.shadows[3],

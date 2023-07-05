@@ -1,7 +1,6 @@
-// ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 
-const Table = (theme: Theme) => {
+const Table = (theme: customTheme) => {
   return {
     MuiTableContainer: {
       styleOverrides: {

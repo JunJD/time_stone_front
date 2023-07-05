@@ -1,10 +1,9 @@
-// ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 
 // ** Theme Config Imports
 import themeConfig from '@/@core/configs/themeConfig';
 
-const Button = (theme: Theme) => {
+const Button = (theme: customTheme) => {
   return {
     MuiButton: {
       styleOverrides: {

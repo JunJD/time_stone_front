@@ -1,7 +1,6 @@
-// ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 
-const Tabs = (theme: Theme) => {
+const Tabs = (theme: customTheme) => {
   return {
     MuiTabs: {
       styleOverrides: {

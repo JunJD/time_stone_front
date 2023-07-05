@@ -1,11 +1,10 @@
-// ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 import { lighten, darken } from '@mui/material/styles';
 
 // ** Util Import
 import { hexToRGBA } from '@/@core/utils/hex-to-rgba';
 
-const Alert = (theme: Theme) => {
+const Alert = (theme: customTheme) => {
   const getColor = theme.palette.mode === 'light' ? darken : lighten;
 
   return {

@@ -1,7 +1,6 @@
-// ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 
-const Avatar = (theme: Theme) => {
+const Avatar = (theme: customTheme) => {
   return {
     MuiAvatar: {
       styleOverrides: {

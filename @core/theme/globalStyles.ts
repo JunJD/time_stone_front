@@ -1,7 +1,6 @@
-// ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 
-const GlobalStyles = (theme: Theme) => {
+const GlobalStyles = (theme: customTheme) => {
   return {
     '.ps__rail-y': {
       zIndex: 1,

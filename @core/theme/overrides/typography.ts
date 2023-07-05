@@ -1,7 +1,6 @@
-// ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 
-const Typography = (theme: Theme) => {
+const Typography = (theme: customTheme) => {
   return {
     MuiTypography: {
       styleOverrides: {

@@ -1,7 +1,6 @@
-// ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 
-const Popover = (theme: Theme) => {
+const Popover = (theme: customTheme) => {
   return {
     MuiPopover: {
       styleOverrides: {

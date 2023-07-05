@@ -1,7 +1,6 @@
-// ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 
-const Snackbar = (theme: Theme) => {
+const Snackbar = (theme: customTheme) => {
   return {
     MuiSnackbarContent: {
       styleOverrides: {

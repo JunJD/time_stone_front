@@ -1,5 +1,4 @@
-// ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 
 // ** Overrides Imports
 import MuiCard from './card';
@@ -30,7 +29,7 @@ import MuiTypography from './typography';
 import MuiToggleButton from './toggleButton';
 import MuiDateTimePicker from './dateTimePicker';
 
-const Overrides = (theme: Theme) => {
+const Overrides = (theme: customTheme) => {
   const chip = MuiChip(theme);
   const list = MuiList(theme);
   const menu = MuiMenu(theme);

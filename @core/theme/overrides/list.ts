@@ -1,7 +1,6 @@
-// ** MUI Imports
-import { Theme } from '@mui/material/styles';
+import { customTheme } from '@/@core/layouts.types';
 
-const List = (theme: Theme) => {
+const List = (theme: customTheme) => {
   return {
     MuiListItemIcon: {
       styleOverrides: {

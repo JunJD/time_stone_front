@@ -1,17 +1,15 @@
-// ** MUI Imports
-import { Theme } from '@mui/material/styles';
-
 // ** Util Import
+import { customTheme } from '@/@core/layouts.types';
 import { hexToRGBA } from '@/@core/utils/hex-to-rgba';
 
-const Backdrop = (theme: Theme) => {
+const Backdrop = (theme: customTheme) => {
   return {
     MuiBackdrop: {
       styleOverrides: {
         root: {
           backgroundColor:
             theme.palette.mode === 'light'
-              ? `rgba(${(theme.palette as any).customColors.main}, 0.7)`
+              ? `rgba(${theme.palette.customColors.main}, 0.7)`
               : hexToRGBA(theme.palette.background.default, 0.7),
         },
         invisible: {
