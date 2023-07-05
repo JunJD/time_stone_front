@@ -3,3 +3,10 @@ export interface langProps {
     lang: 'es' | 'en' | 'de' | 'zh';
   };
 }
+
+export interface langLayoutProps {
+  params: {
+    lang: 'es' | 'en' | 'de' | 'zh';
+  };
+  children: React.ReactNode;
+}

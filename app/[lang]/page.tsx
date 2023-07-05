@@ -5,9 +5,10 @@ export default function Page({ params }: langProps) {
   const { home } = use(import(`./dictionaries/${params.lang}.json`));
 
   return (
-    <div style={{ height: '100vh' }}>
-      <code>{JSON.stringify(home)}</code>
+    <div>
+      <code>当前语言:</code>
       {params.lang}
+      <div>{home.title_link}</div>
     </div>
   );
 }
