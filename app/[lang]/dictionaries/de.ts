@@ -11,7 +11,7 @@ export default {
   navigation: {
     HomePage: 'Startseite',
     DailyTrend: 'täglicher Trend',
-    resourceLibrary: 'Ressourcenbibliothek',
+    resourceLibrary: 'Ressourcen bibliothek',
     AskAI: 'Frag AI',
     Settings: 'Einstellungen',
   },

@@ -1,16 +1,12 @@
 'use client';
 
-import React, {
-  ElementType,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { ElementType, useEffect, useMemo, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import {
+  Avatar,
   Box,
   BoxProps,
+  Button,
   Chip,
   Drawer,
   Link,
@@ -33,9 +29,9 @@ import themeConfig from '@/@core/configs/themeConfig';
 import { useSettings } from '@/@core/hooks/useSettings';
 
 import { NavItemsType, NavLinkType } from '@/@core/layouts.types';
-import { hexToRGBA } from '@/@core/utils/hex-to-rgba';
 import { langLayoutProps } from './params.types';
 import dictionaries from './dictionaries';
+
 interface Props {
   NavMenuContent?: (props?: any) => React.ReactNode;
 
@@ -52,10 +48,11 @@ const MenuHeaderWrapper = styled(Box)<BoxProps>(({ theme }) => ({
 }));
 
 const HeaderTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
+  fontFamily: 'fantasy',
   fontWeight: 600,
   lineHeight: 'normal',
   textTransform: 'uppercase',
-  color: theme.palette.text.primary,
+  color: theme.palette.primary.main,
   transition: 'opacity .25s ease-in-out, margin .25s ease-in-out',
 }));
 
@@ -67,29 +64,19 @@ const StyledLink = styled('a')({
 
 const NavHeader = () => {
   return (
-    <MenuHeaderWrapper className="nav-header" sx={{ pl: 6 }}>
+    <MenuHeaderWrapper className="nav-header" sx={{ pl: 8, pt: 5 }}>
       <StyledLink>
+        <Avatar
+          alt="me"
+          src="/64a96717-ee4e-46e8-bdd2-7409868073da-1683683373.jpg"
+        />
         <HeaderTitle variant="h6" sx={{ ml: 3 }}>
-          xxxxx
+          TIME STONE
         </HeaderTitle>
       </StyledLink>
     </MenuHeaderWrapper>
   );
 };
-
-const StyledBoxForShadow = styled(Box)<BoxProps>({
-  top: 50,
-  left: -8,
-  zIndex: 2,
-  height: 75,
-  display: 'none',
-  position: 'absolute',
-  pointerEvents: 'none',
-  width: 'calc(100% + 15px)',
-  '&.d-block': {
-    display: 'block',
-  },
-});
 
 const MenuItemTextMetaWrapper = styled(Box)<BoxProps>({
   width: '100%',
@@ -201,7 +188,6 @@ export default function Navigation(props: Props) {
   }, [pathname]);
 
   const RenderMenuItems = NavItems?.map((item: NavLinkType, index: number) => {
-    // eslint-disable-next-line react/jsx-key
     return (
       <NavLink
         item={item}
@@ -216,9 +202,6 @@ export default function Navigation(props: Props) {
     return (dictionaries(lang) as any).auth;
   }, [lang]);
 
-  // ** Ref
-  const shadowRef = useRef(null);
-
   const theme = useTheme();
   const navWidth = themeConfig.navigationSize;
 
@@ -229,18 +212,31 @@ export default function Navigation(props: Props) {
 
   const afterNavMenuContent = useMemo(() => {
     return (
-      <Box
+      <Button
         sx={{
           display: 'flex',
           justifyContent: 'start',
           alignItems: 'center',
-          pb: 5,
-          pl: 5,
+          textTransform: 'lowercase',
+          mb: 5,
+          mx: 8,
+        }}
+        variant="text"
+        size="small"
+        onClick={() => {
+          console.log('登出');
         }}
       >
         <LogoutIcon />
-        <Typography>{authLang.LogOut}</Typography>
-      </Box>
+        <Typography
+          sx={{
+            pl: 2,
+          }}
+          variant="body2"
+        >
+          {authLang.LogOut}
+        </Typography>
+      </Button>
     );
   }, [authLang.LogOut]);
 
@@ -266,21 +262,12 @@ export default function Navigation(props: Props) {
       }}
     >
       <NavHeader />
-      <StyledBoxForShadow
-        ref={shadowRef}
-        sx={{
-          background: `linear-gradient(${
-            theme.palette.background.default
-          } 40%,${hexToRGBA(
-            theme.palette.background.default,
-            0.1,
-          )} 95%,${hexToRGBA(theme.palette.background.default, 0.05)})`,
-        }}
-      />
       {beforeNavMenuContent}
       <Box sx={{ height: '100%', position: 'relative', overflow: 'hidden' }}>
         <Box
           sx={{
+            pt: 5,
+            mx: 3,
             height: '100%',
             display: 'flex',
             flexDirection: 'column',

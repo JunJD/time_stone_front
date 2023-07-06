@@ -16,6 +16,6 @@ export default {
     Settings: 'settings',
   },
   auth: {
-    LogOut: 'Log out',
+    LogOut: 'log out',
   },
 };
