@@ -18,11 +18,13 @@ import {
   ListItem,
   ListItemButton,
   ListItemButtonProps,
+  ListItemIcon,
   Typography,
   TypographyProps,
   styled,
   useTheme,
 } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Theme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -33,10 +35,9 @@ import { useSettings } from '@/@core/hooks/useSettings';
 import { NavItemsType, NavLinkType } from '@/@core/layouts.types';
 import { hexToRGBA } from '@/@core/utils/hex-to-rgba';
 import { langLayoutProps } from './params.types';
+import dictionaries from './dictionaries';
 interface Props {
-  verticalNavMenuContent?: (props?: any) => React.ReactNode;
-  afterVerticalNavMenuContent?: (props?: any) => React.ReactNode;
-  beforeVerticalNavMenuContent?: (props?: any) => React.ReactNode;
+  NavMenuContent?: (props?: any) => React.ReactNode;
 
   lang: any;
 }
@@ -156,6 +157,15 @@ const NavLink = ({
             cursor: 'pointer',
           }}
         >
+          <ListItemIcon
+            sx={{
+              mr: 2.5,
+              color: 'text.primary',
+              transition: 'margin .25s ease-in-out',
+            }}
+          >
+            {item.icon}
+          </ListItemIcon>
           <MenuItemTextMetaWrapper>
             <Typography>{item.title}</Typography>
             {item.badgeContent ? (
@@ -178,7 +188,7 @@ const NavLink = ({
 };
 
 export default function Navigation(props: Props) {
-  const { lang } = props;
+  const { lang, NavMenuContent: userNavMenuContent } = props;
 
   const NavItems: NavItemsType = navigation(lang);
 
@@ -202,6 +212,9 @@ export default function Navigation(props: Props) {
       />
     );
   });
+  const authLang = useMemo(() => {
+    return (dictionaries(lang) as any).auth;
+  }, [lang]);
 
   // ** Ref
   const shadowRef = useRef(null);
@@ -213,6 +226,29 @@ export default function Navigation(props: Props) {
 
   // ** custom hooks
   const { settings } = useSettings();
+
+  const afterNavMenuContent = useMemo(() => {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'start',
+          alignItems: 'center',
+          pb: 5,
+          pl: 5,
+        }}
+      >
+        <LogoutIcon />
+        <Typography>{authLang.LogOut}</Typography>
+      </Box>
+    );
+  }, [authLang.LogOut]);
+
+  // todo beforeNavMenuContent
+  const beforeNavMenuContent = useMemo(() => {
+    return null;
+  }, []);
+
   return (
     <Drawer
       variant={hidden ? 'temporary' : 'permanent'}
@@ -241,6 +277,7 @@ export default function Navigation(props: Props) {
           )} 95%,${hexToRGBA(theme.palette.background.default, 0.05)})`,
         }}
       />
+      {beforeNavMenuContent}
       <Box sx={{ height: '100%', position: 'relative', overflow: 'hidden' }}>
         <Box
           sx={{
@@ -250,14 +287,19 @@ export default function Navigation(props: Props) {
             justifyContent: 'space-between',
           }}
         >
-          <List
-            className="nav-items"
-            sx={{ transition: 'padding .25s ease', pr: 4.5 }}
-          >
-            {RenderMenuItems}
-          </List>
+          {userNavMenuContent ? (
+            userNavMenuContent(props)
+          ) : (
+            <List
+              className="nav-items"
+              sx={{ transition: 'padding .25s ease', pr: 4.5 }}
+            >
+              {RenderMenuItems}
+            </List>
+          )}
         </Box>
       </Box>
+      {afterNavMenuContent}
     </Drawer>
   );
 }

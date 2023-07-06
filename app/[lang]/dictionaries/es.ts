@@ -15,4 +15,7 @@ export default {
     AskAI: 'Preguntar a AI',
     Settings: 'Configuraciones',
   },
+  auth: {
+    LogOut: 'Cerrar sesión',
+  },
 };

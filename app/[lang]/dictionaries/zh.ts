@@ -15,4 +15,7 @@ export default {
     AskAI: '问AI',
     Settings: '设置',
   },
+  auth: {
+    LogOut: '退出账号',
+  },
 };

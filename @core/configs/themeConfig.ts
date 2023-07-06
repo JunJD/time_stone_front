@@ -19,7 +19,7 @@ const themeConfig: ThemeConfig = {
   routingLoader: true /* true | false */,
 
   // ** Navigation (Menu) Configs
-  navigationSize: 260 /* Number in PX(Pixels) */,
+  navigationSize: 280 /* Number in PX(Pixels) */,
 
   // ** Other Configs 响应式式字体
   responsiveFontSizes: true /* true | false */,

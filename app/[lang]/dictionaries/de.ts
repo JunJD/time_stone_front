@@ -15,4 +15,7 @@ export default {
     AskAI: 'Frag AI',
     Settings: 'Einstellungen',
   },
+  auth: {
+    LogOut: 'Ausloggen',
+  },
 };

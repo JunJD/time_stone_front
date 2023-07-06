@@ -7,6 +7,7 @@ import React from 'react';
 export const _Wrapper = styled('div')({
   height: '100%',
   display: 'flex',
+  flexDirection: 'row' /**默认 */,
 });
 
 export default function Wrapper({ children }: { children: React.ReactNode }) {

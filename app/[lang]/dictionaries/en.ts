@@ -15,4 +15,7 @@ export default {
     AskAI: 'Ask AI',
     Settings: 'settings',
   },
+  auth: {
+    LogOut: 'Log out',
+  },
 };
