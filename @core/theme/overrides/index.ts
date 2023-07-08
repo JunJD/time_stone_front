@@ -1,7 +1,6 @@
 import { customTheme } from '@/@core/layouts.types';
 
 // ** Overrides Imports
-import MuiCard from './card';
 import MuiChip from './chip';
 import MuiLink from './link';
 import MuiList from './list';
@@ -34,7 +33,6 @@ const Overrides = (theme: customTheme) => {
   const list = MuiList(theme);
   const menu = MuiMenu(theme);
   const tabs = MuiTabs(theme);
-  const cards = MuiCard(theme);
   const input = MuiInput(theme);
   const tables = MuiTable(theme);
   const alerts = MuiAlerts(theme);
@@ -58,7 +56,6 @@ const Overrides = (theme: customTheme) => {
     list,
     menu,
     tabs,
-    cards,
     input,
     alerts,
     button,

@@ -1,21 +1,100 @@
-'use client';
+import React, { forwardRef, ForwardedRef } from 'react';
 
-import { langLayoutProps } from '@/app/[lang]/params.types';
-import { Box, useTheme } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardProps,
+  Divider,
+  SxProps,
+  Theme,
+  Typography,
+} from '@mui/material';
 
-interface Props extends langLayoutProps {}
+// project import
+// import Highlighter from './third-party/Highlighter';
 
-export default function MainCard(props: Props) {
+// header style
+const headerSX = {
+  p: 2.5,
+  '& .MuiCardHeader-action': { m: '0px auto', alignSelf: 'center' },
+};
+
+export interface MainCardProps extends Omit<CardProps, 'content'> {
+  border?: boolean;
+  boxShadow?: boolean;
+  children?: React.ReactNode;
+  content?: boolean;
+  contentSX?: SxProps<Theme>;
+  darkTitle?: boolean;
+  divider?: boolean;
+  elevation?: number;
+  secondary?: React.ReactNode;
+  shadow?: boolean;
+  sx?: SxProps<Theme>;
+  title?: string & React.ReactNode;
+}
+
+const MainCard = (
+  {
+    border = true,
+    children,
+    content = true,
+    contentSX = {},
+    darkTitle,
+    divider = true,
+    elevation,
+    secondary,
+    sx = {},
+    title,
+    ...others
+  }: MainCardProps,
+  ref: ForwardedRef<any>,
+) => {
   const theme = useTheme();
-  const { children } = props;
+
   return (
-    <Box
+    <Card
+      elevation={elevation || 0}
+      ref={ref}
+      {...others}
       sx={{
-        background: theme.palette.background.paper,
-        borderRadius: '10px',
+        ...sx,
+        borderRadius: 2,
+        '& pre': {
+          m: 0,
+          p: 2,
+          fontFamily: theme.typography.fontFamily,
+          fontSize: '0.75rem',
+        },
       }}
     >
-      {children}
-    </Box>
+      {/* card header and action */}
+      {!darkTitle && title && (
+        <CardHeader
+          sx={headerSX}
+          titleTypographyProps={{ variant: 'subtitle1' }}
+          title={title}
+          action={secondary}
+        />
+      )}
+      {darkTitle && title && (
+        <CardHeader
+          sx={headerSX}
+          title={<Typography variant="h3">{title}</Typography>}
+          action={secondary}
+        />
+      )}
+
+      {/* content & header divider */}
+      {title && divider && <Divider />}
+
+      {/* card content */}
+      {content && <CardContent sx={contentSX}>{children}</CardContent>}
+      {!content && children}
+    </Card>
   );
-}
+};
+
+export default forwardRef(MainCard);

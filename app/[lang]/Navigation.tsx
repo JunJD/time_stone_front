@@ -31,6 +31,7 @@ import { useSettings } from '@/@core/hooks/useSettings';
 import { NavItemsType, NavLinkType } from '@/@core/layouts.types';
 import { langLayoutProps } from './params.types';
 import dictionaries from './dictionaries';
+import { useSnackbar } from 'notistack';
 
 interface Props {
   NavMenuContent?: (props?: any) => React.ReactNode;
@@ -118,7 +119,7 @@ const NavLink = ({
   setPathname: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const router = useRouter();
-
+  const { enqueueSnackbar } = useSnackbar();
   const isActive = useMemo(() => {
     return pathname === `/${lang}${item.path}`;
   }, [item.path, lang, pathname]);
@@ -131,8 +132,19 @@ const NavLink = ({
     >
       <Link
         onClick={() => {
+          if (!item?.isBeta) {
+            router.push(item.path === undefined ? '/' : `/${lang}${item.path}`);
+          } else {
+            enqueueSnackbar('待开放', {
+              variant: 'warning',
+              autoHideDuration: 2000,
+              anchorOrigin: {
+                vertical: 'top',
+                horizontal: 'center',
+              },
+            });
+          }
           setPathname(item.path === undefined ? '/' : `/${lang}${item.path}`);
-          router.push(item.path === undefined ? '/' : `/${lang}${item.path}`);
         }}
       >
         <MenuNavLink
@@ -142,6 +154,7 @@ const NavLink = ({
           sx={{
             pl: 5.5,
             cursor: 'pointer',
+            minWidth: themeConfig.navigationSize / 1.5,
           }}
         >
           <ListItemIcon

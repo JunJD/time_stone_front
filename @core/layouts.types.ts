@@ -34,6 +34,7 @@ export type NavLinkType = {
     | 'error'
     | 'warning'
     | 'info';
+  isBeta?: boolean;
 };
 
 // export type NavSectionTitle = {
