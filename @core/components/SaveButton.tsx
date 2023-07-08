@@ -19,12 +19,12 @@ import React from 'react';
 interface SaveButtonProps extends ButtonProps {
   sx?: SxProps<Theme>;
   handleSave: (timer: string) => void;
+  OkText?: string;
+  rightOptions: string[];
 }
 
-const options = ['10min', '20min', '30min', '60min'];
-
 export default function SaveButton(props: SaveButtonProps) {
-  const { sx, handleSave } = props;
+  const { sx, handleSave, OkText, rightOptions: options } = props;
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -60,7 +60,7 @@ export default function SaveButton(props: SaveButtonProps) {
         ref={anchorRef}
         aria-label="split button"
       >
-        <Button onClick={handleClick}>保存</Button>
+        <Button onClick={handleClick}>{OkText ?? 'SAVE'}</Button>
         <Button size="small" onClick={handleToggle}>
           <ArrowDropUpIcon />
         </Button>

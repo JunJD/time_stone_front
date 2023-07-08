@@ -18,4 +18,12 @@ export default {
   auth: {
     LogOut: 'log out',
   },
+  textArea: {
+    placeholder: 'What do you want to do with your spare time...',
+    OkText: 'Save',
+    timerUnit: 'min',
+  },
+  timerList: {
+    title: `Today's spare time`,
+  },
 };

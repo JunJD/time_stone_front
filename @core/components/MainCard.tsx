@@ -17,7 +17,9 @@ import {
 
 // header style
 const headerSX = {
-  p: 2.5,
+  pb: 0.5,
+  pt: 3,
+  pl: 3,
   '& .MuiCardHeader-action': { m: '0px auto', alignSelf: 'center' },
 };
 
@@ -75,7 +77,7 @@ const MainCard = (
         <CardHeader
           sx={headerSX}
           titleTypographyProps={{ variant: 'subtitle1' }}
-          title={title}
+          title={<strong>{title}</strong>}
           action={secondary}
         />
       )}

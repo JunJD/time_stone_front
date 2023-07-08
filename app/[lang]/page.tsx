@@ -1,12 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { ChangeEventHandler, useState } from 'react';
 import { langProps } from './params.types';
 import MainCard from '@/@core/components/MainCard';
 import { Box, BoxProps, Theme, styled, useMediaQuery } from '@mui/material';
 import TextArea from '@/@core/components/TextArea';
 import SaveButton from '@/@core/components/SaveButton';
 import TimerList from '@/@core/components/TimerList';
+import dictionaries from './dictionaries';
 
 const HomeWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   display: 'flex',
@@ -25,7 +26,21 @@ const HomeRightSection = styled('section')(() => ({
 }));
 
 export default function Page({ params }: langProps) {
+  const lang = params.lang;
+
+  const { textArea, timerList } = dictionaries(lang) as any;
+  const options = [10, 20, 30, 60].map(
+    (time) => time + ` ${textArea.timerUnit}`,
+  );
   const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
+
+  /** states */
+  const [value, setValue] = useState('');
+
+  /** functions */
+  const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
+    setValue(e.target.value);
+  };
 
   const handleSave = (timer: string) => {
     console.info(`You clicked ${timer}`);
@@ -41,9 +56,9 @@ export default function Page({ params }: langProps) {
           }}
         >
           <TextArea
-            value={''}
-            handleChange={() => {}}
-            placeholder="你想利用当前碎片时间做些什么..."
+            value={value}
+            handleChange={handleChange}
+            placeholder={textArea.placeholder}
             endDecorator={
               <Box
                 sx={{
@@ -60,6 +75,8 @@ export default function Page({ params }: langProps) {
                     my: 2,
                   }}
                   handleSave={handleSave}
+                  OkText={textArea.OkText}
+                  rightOptions={options}
                 />
               </Box>
             }
@@ -70,7 +87,7 @@ export default function Page({ params }: langProps) {
           sx={{
             mt: 3,
           }}
-          title={'今日碎片时间'}
+          title={timerList.title}
         >
           <TimerList />
         </MainCard>

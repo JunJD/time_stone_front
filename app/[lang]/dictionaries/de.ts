@@ -18,4 +18,10 @@ export default {
   auth: {
     LogOut: 'Ausloggen',
   },
+  textArea: {
+    placeholder: 'Was möchten Sie in Ihrer Freizeit tun...',
+    OkText: 'Speichern',
+    timerUnit: 'min',
+  },
+  timerList: { title: 'Heute verfügbare Zeit' },
 };

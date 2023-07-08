@@ -18,4 +18,12 @@ export default {
   auth: {
     LogOut: '退出账号',
   },
+  textArea: {
+    placeholder: '你想利用当前碎片时间做些什么...',
+    OkText: '保存',
+    timerUnit: '分',
+  },
+  timerList: {
+    title: '今日碎片时间',
+  },
 };
