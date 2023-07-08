@@ -11,7 +11,7 @@
     "format": "npx prettier --write \"app/**/*.tsx\" \"app/**/*.ts\" \"@core/**/*.tsx\" \"@core/**/*.ts\"",
     "lint": "next lint",
     "preinstall": "npx only-allow pnpm",
-    "postinstall": "npx patch-package -y & node study/index"
+    "postinstall": "npx patch-package -y"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",
