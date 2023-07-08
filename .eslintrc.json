@@ -25,6 +25,6 @@
     "no-var": "error",
     "no-console": "off",
     "no-unused-vars": ["error", { "vars": "all", "args": "none" }],
-    "linebreak-style": ["error", "windows"]
+    "linebreak-style": ["error", "unix"]
   }
 }
