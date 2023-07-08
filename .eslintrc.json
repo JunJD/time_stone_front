@@ -16,7 +16,12 @@
     "es2021": true
   },
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "no-var": "error",
     "no-console": "off",
     "no-unused-vars": ["error", { "vars": "all", "args": "none" }],
