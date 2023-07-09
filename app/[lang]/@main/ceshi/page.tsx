@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { langProps } from '../params.types';
+import { langProps } from '../../params.types';
 import { useSettings } from '@/@core/hooks/useSettings';
 import { useEffect } from 'react';
 export default function Page({ params }: langProps) {

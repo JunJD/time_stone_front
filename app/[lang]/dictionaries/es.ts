@@ -8,6 +8,17 @@ export default {
     decrement: 'Disminuir',
     increment: 'Incrementar',
   },
+  login: {
+    welcome: 'Bienvenido',
+    site: 'Un sitio web dedicado a mejorar las habilidades personales mediante el aprovechamiento del tiempo fragmentado.',
+    email: 'Correo electrónico',
+    password: 'Contraseña',
+    rememberMe: 'Recuérdame',
+    forgotPassword: '¿Olvidaste tu contraseña?',
+    loginText: 'Iniciar sesión',
+    newOnPlatform: '¿Eres nuevo en nuestra plataforma?',
+    createAccount: 'Crear una cuenta',
+  },
   navigation: {
     HomePage: 'Página de inicio',
     DailyTrend: 'Tendencia diaria',

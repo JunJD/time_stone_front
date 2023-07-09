@@ -8,6 +8,17 @@ export default {
     decrement: 'Decrement',
     increment: 'Increment',
   },
+  login: {
+    welcome: 'welcome',
+    site: 'A website dedicated to enhancing personal skills through utilizing fragmented time.',
+    email: 'Email',
+    password: 'Password',
+    rememberMe: 'Remember me',
+    forgotPassword: 'Forgot Password',
+    loginText: 'Login',
+    newOnPlatform: 'New on our platform?',
+    createAccount: 'Create an account',
+  },
   navigation: {
     HomePage: 'home page',
     DailyTrend: 'daily trend',

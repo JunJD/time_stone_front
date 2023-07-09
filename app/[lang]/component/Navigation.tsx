@@ -29,8 +29,8 @@ import themeConfig from '@/@core/configs/themeConfig';
 import { useSettings } from '@/@core/hooks/useSettings';
 
 import { NavItemsType, NavLinkType } from '@/@core/layouts.types';
-import { langLayoutProps } from './params.types';
-import dictionaries from './dictionaries';
+import { langLayoutProps } from '../params.types';
+import dictionaries from '../dictionaries';
 import { useSnackbar } from 'notistack';
 
 interface Props {

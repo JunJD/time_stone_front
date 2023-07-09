@@ -1,10 +1,12 @@
-import zh from './zh';
+'use client';
+
+import cn from './cn';
 import es from './es';
 import en from './en';
 import de from './de';
-function dictionaries(lang: 'es' | 'en' | 'de' | 'zh') {
+function dictionaries(lang: 'es' | 'en' | 'de' | 'cn') {
   const langs = {
-    zh,
+    cn,
     es,
     en,
     de,

@@ -15,8 +15,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html>
       <body className={inter.className}>
+        {/* 一些全局配置 */}
         <Providers>{children}</Providers>
       </body>
     </html>

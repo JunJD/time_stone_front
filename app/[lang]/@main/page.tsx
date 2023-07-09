@@ -1,13 +1,13 @@
 'use client';
 
 import React, { ChangeEventHandler, useState } from 'react';
-import { langProps } from './params.types';
+import { langProps } from './../params.types';
 import MainCard from '@/@core/components/MainCard';
 import { Box, BoxProps, Theme, styled, useMediaQuery } from '@mui/material';
 import TextArea from '@/@core/components/TextArea';
 import SaveButton from '@/@core/components/SaveButton';
 import TimerList from '@/@core/components/TimerList';
-import dictionaries from './dictionaries';
+import dictionaries from './../dictionaries';
 
 const HomeWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   display: 'flex',

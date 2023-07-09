@@ -8,6 +8,17 @@ export default {
     decrement: '测hi',
     increment: '啊撒其实',
   },
+  login: {
+    welcome: '欢迎',
+    site: '一个专注于利用碎片时间提升个人能力的网站。',
+    email: '邮箱',
+    password: '密码',
+    rememberMe: '记住我',
+    forgotPassword: '忘记密码',
+    loginText: '登录',
+    newOnPlatform: '在我们的平台上是新用户吗？',
+    createAccount: '创建一个账号',
+  },
   navigation: {
     HomePage: '首页',
     DailyTrend: '每日趋势',
