@@ -28,7 +28,7 @@ const HomeRightSection = styled('section')(() => ({
 export default function Page({ params }: langProps) {
   const lang = params.lang;
 
-  const { textArea, timerList } = dictionaries(lang) as any;
+  const { textArea } = dictionaries(lang) as any;
   const options = [10, 20, 30, 60].map(
     (time) => time + ` ${textArea.timerUnit}`,
   );
@@ -83,14 +83,7 @@ export default function Page({ params }: langProps) {
           />
         </MainCard>
         {/* 碎片 list */}
-        <MainCard
-          sx={{
-            mt: 3,
-          }}
-          title={timerList.title}
-        >
-          <TimerList />
-        </MainCard>
+        <TimerList />
       </HomeLeftSection>
       {/* 右侧 */}
       {!hidden && (

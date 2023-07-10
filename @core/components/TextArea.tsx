@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEventHandler, ReactNode, Suspense } from 'react';
+import { ChangeEventHandler, ReactNode } from 'react';
 import {
   Box,
   FilledInput,
@@ -32,50 +32,48 @@ function TextArea(props: ITextAreaProps) {
         },
       }}
     >
-      <Suspense fallback={<Box sx={{ height: '100px' }}>Loading feed...</Box>}>
-        <FilledInput
-          disableUnderline
-          sx={{
-            p: 0.5,
-            pb: 1,
-            // 重写滚动条
+      <FilledInput
+        disableUnderline
+        sx={{
+          p: 0.5,
+          pb: 1,
+          // 重写滚动条
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+          '&.MuiFilledInput-root': {
+            background: 'transparent',
+          },
+          '&.MuiFilledInput-root:hover': {
+            background: 'transparent',
+          },
+        }}
+        multiline
+        {...otherProps}
+        value={value}
+        onChange={handleChange}
+        inputComponent={TextareaAutosize}
+        inputProps={{
+          minRows: minRows,
+          maxRows: 18,
+          sx: {
+            resize: 'none',
+            mr: 2,
             '&::-webkit-scrollbar': {
-              display: 'none',
+              width: '3px',
+              height: '3px',
             },
-            '&.MuiFilledInput-root': {
-              background: 'transparent',
+            '&::-webkit-scrollbar-thumb': {
+              backgroundColor: '#f5f5f7',
+              borderRadius: '999px',
             },
-            '&.MuiFilledInput-root:hover': {
-              background: 'transparent',
+            '&::-webkit-scrollbar-track': {
+              backgroundColor: '#e5e5ea',
+              borderRadius: '999px',
             },
-          }}
-          multiline
-          {...otherProps}
-          value={value}
-          onChange={handleChange}
-          inputComponent={TextareaAutosize}
-          inputProps={{
-            minRows: minRows,
-            maxRows: 18,
-            sx: {
-              // resize: 'none',
-              mr: 2,
-              '&::-webkit-scrollbar': {
-                width: '3px',
-                height: '3px',
-              },
-              '&::-webkit-scrollbar-thumb': {
-                backgroundColor: '#f5f5f7',
-                borderRadius: '999px',
-              },
-              '&::-webkit-scrollbar-track': {
-                backgroundColor: '#e5e5ea',
-                borderRadius: '999px',
-              },
-            },
-          }}
-        />
-      </Suspense>
+          },
+        }}
+      />
       {endDecorator}
     </Box>
   );
