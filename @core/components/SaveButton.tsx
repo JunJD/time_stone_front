@@ -13,6 +13,7 @@ import {
   Popper,
   SxProps,
   Theme,
+  useTheme,
 } from '@mui/material';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import React from 'react';
@@ -25,6 +26,7 @@ interface SaveButtonProps extends ButtonProps {
 
 export default function SaveButton(props: SaveButtonProps) {
   const { sx, handleSave, OkText, rightOptions: options } = props;
+  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -67,14 +69,13 @@ export default function SaveButton(props: SaveButtonProps) {
       </ButtonGroup>
       <Popper
         sx={{
-          zIndex: 1,
+          zIndex: theme.zIndex.tooltip,
         }}
         open={open}
         anchorEl={anchorRef.current}
         role={undefined}
         placement="bottom-end"
         transition
-        disablePortal
       >
         {({ TransitionProps, placement }) => (
           <Grow
