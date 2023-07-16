@@ -2,6 +2,7 @@ import React, { forwardRef, ForwardedRef } from 'react';
 
 import { useTheme } from '@mui/material/styles';
 import {
+  Box,
   Card,
   CardContent,
   CardHeader,
@@ -57,45 +58,53 @@ const MainCard = (
   const theme = useTheme();
 
   return (
-    <Card
-      elevation={elevation || 0}
-      ref={ref}
-      {...others}
+    <Box
       sx={{
+        borderRadius: 0,
+        bgcolor: theme.palette.background.default,
         ...sx,
-        borderRadius: 2,
-        '& pre': {
-          m: 0,
-          p: 2,
-          fontFamily: theme.typography.fontFamily,
-          fontSize: '0.75rem',
-        },
       }}
     >
-      {/* card header and action */}
-      {!darkTitle && title && (
-        <CardHeader
-          sx={headerSX}
-          titleTypographyProps={{ variant: 'subtitle1' }}
-          title={<strong>{title}</strong>}
-          action={secondary}
-        />
-      )}
-      {darkTitle && title && (
-        <CardHeader
-          sx={headerSX}
-          title={<Typography variant="h3">{title}</Typography>}
-          action={secondary}
-        />
-      )}
+      <Card
+        elevation={elevation || 0}
+        ref={ref}
+        {...others}
+        sx={{
+          borderRadius: 2,
+          '& pre': {
+            m: 0,
+            p: 2,
+            fontFamily: theme.typography.fontFamily,
+            fontSize: '0.75rem',
+          },
+          ...sx,
+        }}
+      >
+        {/* card header and action */}
+        {!darkTitle && title && (
+          <CardHeader
+            sx={headerSX}
+            titleTypographyProps={{ variant: 'subtitle1' }}
+            title={<strong>{title}</strong>}
+            action={secondary}
+          />
+        )}
+        {darkTitle && title && (
+          <CardHeader
+            sx={headerSX}
+            title={<Typography variant="h3">{title}</Typography>}
+            action={secondary}
+          />
+        )}
 
-      {/* content & header divider */}
-      {title && divider && <Divider />}
+        {/* content & header divider */}
+        {title && divider && <Divider />}
 
-      {/* card content */}
-      {content && <CardContent sx={contentSX}>{children}</CardContent>}
-      {!content && children}
-    </Card>
+        {/* card content */}
+        {content && <CardContent sx={contentSX}>{children}</CardContent>}
+        {!content && children}
+      </Card>
+    </Box>
   );
 };
 

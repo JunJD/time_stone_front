@@ -3,14 +3,13 @@
 import { ChangeEventHandler, ReactNode } from 'react';
 import {
   Box,
-  FilledInput,
-  FilledInputProps,
-  TextareaAutosize,
+  StandardTextFieldProps,
+  TextField,
   Theme,
   useMediaQuery,
 } from '@mui/material';
 
-interface ITextAreaProps extends FilledInputProps {
+interface ITextAreaProps extends StandardTextFieldProps {
   endDecorator?: ReactNode;
   value: string;
   handleChange: ChangeEventHandler<HTMLTextAreaElement>;
@@ -32,47 +31,22 @@ function TextArea(props: ITextAreaProps) {
         },
       }}
     >
-      <FilledInput
-        disableUnderline
-        sx={{
-          p: 0.5,
-          pb: 1,
-          // 重写滚动条
-          '&::-webkit-scrollbar': {
-            display: 'none',
-          },
-          '&.MuiFilledInput-root': {
-            background: 'transparent',
-          },
-          '&.MuiFilledInput-root:hover': {
-            background: 'transparent',
-          },
-        }}
-        multiline
-        {...otherProps}
+      <TextField
+        id="standard-multiline-TextField"
         value={value}
         onChange={handleChange}
-        inputComponent={TextareaAutosize}
-        inputProps={{
-          minRows: minRows,
-          maxRows: 18,
-          sx: {
-            resize: 'none',
-            mr: 2,
-            '&::-webkit-scrollbar': {
-              width: '3px',
-              height: '3px',
-            },
-            '&::-webkit-scrollbar-thumb': {
-              backgroundColor: '#f5f5f7',
-              borderRadius: '999px',
-            },
-            '&::-webkit-scrollbar-track': {
-              backgroundColor: '#e5e5ea',
-              borderRadius: '999px',
+        multiline
+        rows={minRows}
+        sx={{
+          '& .MuiInput-root': {
+            height: '78px !important',
+            '& ::-webkit-scrollbar': {
+              display: 'none',
             },
           },
         }}
+        variant="standard"
+        {...otherProps}
       />
       {endDecorator}
     </Box>

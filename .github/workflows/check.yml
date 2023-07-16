@@ -1,0 +1,29 @@
+name: Check
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "node_version=$(cat .github/nodejs.version)" >> $GITHUB_ENV
+      - name: "use node ${{ env.node_version }}"
+        uses: actions/setup-node@v3
+        with:
+          node-version: "${{ env.node_version }}"
+      - name: Install pnpm
+        run: npm install pnpm -g
+      - name: Install dependencies
+        run: npx pnpm install
+      - name: Lint check
+        run: npx pnpm lint
+      - name: Format check
+        run: npx pnpm format
