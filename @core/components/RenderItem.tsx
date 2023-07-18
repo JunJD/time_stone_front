@@ -1,4 +1,12 @@
-import { AccessTime, MoreVert, Notes } from '@mui/icons-material';
+import {
+  AccessTime,
+  MoreHoriz,
+  Notes,
+  PlayCircleOutline,
+  ContentCopy,
+  DeleteOutline,
+  Tune,
+} from '@mui/icons-material';
 import {
   Box,
   Chip,
@@ -29,16 +37,20 @@ interface RenderItemOptions {
 }
 const active = [
   {
-    icon: '',
-    label: 1,
+    icon: <PlayCircleOutline />,
+    label: '开始任务',
   },
   {
-    icon: '',
-    label: 2,
+    icon: <ContentCopy />,
+    label: '复制任务',
   },
   {
-    icon: '',
-    label: 3,
+    icon: <DeleteOutline />,
+    label: '删除任务',
+  },
+  {
+    icon: <Tune />,
+    label: '更多操作',
   },
 ];
 
@@ -54,6 +66,12 @@ export default function RenderItem({
 
   function handleClose(event: MouseEvent | TouchEvent): void {
     setOpen(false);
+  }
+
+  function handleMenuItemClick(index: number) {
+    requestAnimationFrame(() => {
+      setOpen(false);
+    });
   }
   return (
     <MainCard
@@ -81,7 +99,7 @@ export default function RenderItem({
               setOpen(true);
             }}
           >
-            <MoreVert />
+            <MoreHoriz />
           </IconButton>
         </ListItemSecondaryAction>
         <ListItemText
@@ -126,7 +144,7 @@ export default function RenderItem({
         open={open}
         anchorEl={anchorRef.current}
         role={undefined}
-        placement="right-start"
+        placement="left-start"
         transition
         disablePortal
       >
@@ -148,9 +166,18 @@ export default function RenderItem({
                   {active.map((option, index) => (
                     <MenuItem
                       key={`${option.label}_${index}`}
+                      sx={{
+                        color: 'text.primary',
+                        fontSize: 13,
+                        '& svg': {
+                          fontSize: 13,
+                        },
+                      }}
                       // selected={index === selectedIndex}
-                      // onClick={() => handleMenuItemClick(index)}
+                      onClick={() => handleMenuItemClick(index)}
                     >
+                      {option.icon}
+                      &nbsp;
                       {option.label}
                     </MenuItem>
                   ))}
