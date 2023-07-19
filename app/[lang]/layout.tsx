@@ -22,7 +22,7 @@ export default function Layout(props: Props) {
     <Wrapper>
       <Navigation lang={params.lang} />
       <MainContentWrapper>
-        <LayoutAppBar lang={params.lang}  />
+        <LayoutAppBar lang={params.lang} />
         <ContentWrapper>{main}</ContentWrapper>
       </MainContentWrapper>
     </Wrapper>

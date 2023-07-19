@@ -23,11 +23,11 @@ export default function ContentWrapper({
   const theme = useTheme();
   const hidden = useMediaQuery(theme.breakpoints.down('md'));
   return (
-    <OriginContentWrapper 
+    <OriginContentWrapper
       className="layout-page-content"
       sx={{
         px: 6,
-        py: hidden? 0: 6
+        py: hidden ? 0 : 6,
       }}
     >
       {children}

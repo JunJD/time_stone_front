@@ -1,7 +1,7 @@
 'use client';
 
 // ** React Imports
-import { ReactNode, useEffect } from 'react';
+import { useEffect } from 'react';
 
 // ** MUI Imports
 import { styled, useTheme } from '@mui/material/styles';
@@ -42,6 +42,10 @@ const LayoutAppBar = (props: Props) => {
   // ** Props
   const { lang } = props;
 
+  useEffect(() => {
+    console.log(lang);
+  }, [lang]);
+
   // ** Hooks
   const theme = useTheme();
   const hiddenMd = useMediaQuery(theme.breakpoints.down('md'));
@@ -52,12 +56,12 @@ const LayoutAppBar = (props: Props) => {
   function toggleDrawer(flag: boolean) {
     saveSettings({
       ...settings,
-      navVisible: flag
-    })
+      navVisible: flag,
+    });
   }
 
   function handleToGithub() {
-    window.open('https://github.com/JunJD/time_stone_front')
+    window.open('https://github.com/JunJD/time_stone_front');
   }
   return (
     <>
@@ -90,20 +94,26 @@ const LayoutAppBar = (props: Props) => {
               }}
             >
               <Box>
-                <IconButton 
-                  onClick={()=>{toggleDrawer(true)}}
+                <IconButton
+                  onClick={() => {
+                    toggleDrawer(true);
+                  }}
                 >
                   <MenuIcon />
                 </IconButton>
                 <IconButton
-                  onClick={()=>{handleToGithub()}}
+                  onClick={() => {
+                    handleToGithub();
+                  }}
                 >
                   <GitHubIcon />
                 </IconButton>
               </Box>
-              {hiddenSm && <IconButton>
-                <ManageSearchIcon />
-              </IconButton>}
+              {hiddenSm && (
+                <IconButton>
+                  <ManageSearchIcon />
+                </IconButton>
+              )}
             </Box>
           </Toolbar>
         </AppBar>
