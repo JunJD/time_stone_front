@@ -6,12 +6,9 @@ import RenderItem, { FRUITSType } from './RenderItem';
 const FRUITS = [
   { primary: '学习算法', secondary: 'leetcode算法题第999道题目' },
   { primary: '学习设计模式', secondary: '了解桥接模式在前端领域的应用' },
-  { primary: 'react源码阅读1', secondary: 'useState的封装' },
-  { primary: 'react源码阅读2', secondary: 'useState的封装' },
-  { primary: 'react源码阅读3', secondary: 'useState的封装' },
-  { primary: 'react源码阅读4', secondary: 'useState的封装' },
-  { primary: 'react源码阅读5', secondary: 'useState的封装' },
-  { primary: 'react源码阅读6', secondary: 'useState的封装' },
+  { primary: 'react源码阅读', secondary: 'useState的封装' },
+  { primary: '英语学习', secondary: '定语从句' },
+  { primary: 'react native学习', secondary: '环境搭建' },
 ];
 
 export default function TimerList() {

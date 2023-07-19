@@ -221,7 +221,7 @@ export default function Navigation(props: Props) {
   const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
   // ** custom hooks
-  const { settings } = useSettings();
+  const { settings, saveSettings } = useSettings();
 
   const afterNavMenuContent = useMemo(() => {
     return (
@@ -258,11 +258,19 @@ export default function Navigation(props: Props) {
     return null;
   }, []);
 
+  function toggleDrawer(flag: boolean) {
+    saveSettings({
+      ...settings,
+      navVisible: flag
+    })
+  }
+
   return (
     <Drawer
       variant={hidden ? 'temporary' : 'permanent'}
       anchor="left"
       open={settings.navVisible}
+      onClose={()=>{toggleDrawer(false)}}
       sx={{
         width: navWidth,
         flexShrink: 0,
@@ -292,7 +300,14 @@ export default function Navigation(props: Props) {
           ) : (
             <List
               className="nav-items"
-              sx={{ transition: 'padding .25s ease', pr: 4.5 }}
+              sx={{
+                transition: 'padding .25s ease',
+                pr: 4.5,
+                overflowY: 'scroll',
+                '&::-webkit-scrollbar': {
+                  display: 'none',
+                },
+              }}
             >
               {RenderMenuItems}
             </List>

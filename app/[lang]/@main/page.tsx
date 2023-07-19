@@ -55,7 +55,9 @@ const StyledBoxForShadow = styled(Box)<BoxProps>(({ theme }) => ({
   '&.d-block': {
     display: 'block',
   },
-  // boxShadow: theme.shadows[2],
+  [theme.breakpoints.down('md')]: {
+    top: 203.5,
+  },
 }));
 
 export default function Page({ params }: langProps) {

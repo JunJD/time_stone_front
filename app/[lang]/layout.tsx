@@ -4,6 +4,7 @@ import { langLayoutProps } from './params.types';
 import Wrapper from './component/Wrapper';
 import MainContentWrapper from './component/MainContentWrapper';
 import ContentWrapper from './component/ContentWrapper';
+import LayoutAppBar from './component/LayoutAppBar';
 
 interface Props extends langLayoutProps {
   main: React.ReactNode;
@@ -21,6 +22,7 @@ export default function Layout(props: Props) {
     <Wrapper>
       <Navigation lang={params.lang} />
       <MainContentWrapper>
+        <LayoutAppBar lang={params.lang}  />
         <ContentWrapper>{main}</ContentWrapper>
       </MainContentWrapper>
     </Wrapper>
