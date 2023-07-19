@@ -261,8 +261,8 @@ export default function Navigation(props: Props) {
   function toggleDrawer(flag: boolean) {
     saveSettings({
       ...settings,
-      navVisible: flag
-    })
+      navVisible: flag,
+    });
   }
 
   return (
@@ -270,7 +270,9 @@ export default function Navigation(props: Props) {
       variant={hidden ? 'temporary' : 'permanent'}
       anchor="left"
       open={settings.navVisible}
-      onClose={()=>{toggleDrawer(false)}}
+      onClose={() => {
+        toggleDrawer(false);
+      }}
       sx={{
         width: navWidth,
         flexShrink: 0,
