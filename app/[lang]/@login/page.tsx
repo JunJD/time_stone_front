@@ -1,7 +1,7 @@
 'use client';
 
 // ** React Imports
-import { ChangeEvent, MouseEvent, useState } from 'react';
+import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 
 // ** Next Imports
 import Link from 'next/link';
@@ -26,6 +26,7 @@ import MuiFormControlLabel, {
 import { useRouter } from 'next/navigation';
 import dictionaries from './../dictionaries';
 import { langLayoutProps } from '../params.types';
+import useUser from '@/app/lib/query-hooks/use-user';
 
 // import themeConfig from '@/@core/configs/themeConfig';
 
@@ -55,6 +56,13 @@ const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(
 );
 
 export default function Page(props: langLayoutProps) {
+  const { user, loading, loggedOut, mutate } = useUser({
+    email: '864546065@qq.com',
+    password: '123456',
+  });
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
   // ** State
   const [values, setValues] = useState<State>({
     password: '',
