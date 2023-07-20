@@ -1,0 +1,17 @@
+{
+    "short_name": "timeStone",
+    "name": "timeStone",
+    "description": "一个专注于利用碎片时间提升个人能力的应用",
+    "icons": [
+      {
+        "src": "/testicon.png",
+        "type": "image/png",
+        "sizes": "520x520"
+      }
+    ],
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "theme_color": "#f4f4f5",
+    "background_color": "#f4f4f5"
+  }
